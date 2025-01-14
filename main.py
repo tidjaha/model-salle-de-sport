@@ -12,32 +12,31 @@ import requests
 
 
 
+#Chargement des models
 
+#model du conversion ou preparation pour le degré 2
 
+poly=joblib.load("poly.pkl")
 
-model_LR_tc=joblib.load("model(tc).pkl")
+# model pour la conversion ou la predition
 
-scaler_tb = joblib.load("scaler tb.pkl")
-scaler_tc= joblib.load("scaler tc.pkl")
-scaler_MM=joblib.load("scaler MM.pkl")
-scaler_d420=joblib.load("scaler d420.pkl")
-scaler_n20=joblib.load("scaler n20.pkl")
-scaler_ncnh=joblib.load("scaler ncnh.pkl")
-scaler_vc=joblib.load("scaler Vc.pkl")
-scaler_pc=joblib.load("scaler Pc.pkl")
-scaler_Cp=joblib.load("scaler Cp.pkl")
+model_LR_n2=joblib.load("model_LR_n2.pkl")
 
-model_RF_pc=joblib.load("model_RF_pc.pkl")
+# Chargement des scalers
 
-model_LR_vc=joblib.load("model_LR_vc.pkl")
-
-model_LR_Cp = joblib.load("model_LR_Cp.pkl")
-
-
-
-
-
-
+scaler_age=joblib.load("scaler_age.pkl")
+scaler_weight=joblib.load("scaler_weight.pkl")
+scaler_height=joblib.load("scaler_height.pkl")
+scaler_max_bpm=joblib.load("scaler_max_bpm.pkl")
+scaler_avg_bpm=joblib.load("scaler_avg_bpm.pkl")
+scaler_rest_bpm=joblib.load("scaler_rest_bpm.pkl")
+scaler_tpsession=joblib.load("scaler_tpsession.pkl")
+scaler_calories=joblib.load("scaler_calories.pkl")
+scaler_fat=joblib.load("scaler_fat.pkl")
+scaler_water=joblib.load("scaler_water.pkl")
+scaler_freq=joblib.load("scaler_freq.pkl")
+scaler_exp=joblib.load("scaler_exp.pkl")
+scaler_bmi=joblib.load("scaler_bmi.pkl")
 
 
 # Define function to make predictions
@@ -48,27 +47,15 @@ def predict(input_features):
 
     # Make predictions using the loaded model
 
-    tc=model_LR_tc.predict(input_features)
-    pc=model_RF_pc.predict(input_features)
-    vc=model_LR_vc.predict(input_features)
-    Cp=model_LR_Cp.predict(input_features)  
-
-    output_pred=input_features.copy()
-    output_pred["Tc(K)"]=tc
-    output_pred["Pc(bar)"]=pc
-    output_pred["Vc(m3/s)"]=vc
-    output_pred["Cp(J/kg/K)"]=Cp  
-
-    vtc=scaler_tc.inverse_transform(output_pred[["Tc(K)"]])
-    output_pred["Tc(K)"]=vtc
-    vpc=scaler_pc.inverse_transform(output_pred[["Pc(bar)"]])
-    output_pred["Pc(bar)"]=vpc
-    vvc=scaler_vc.inverse_transform(output_pred[["Vc(m3/s)"]])
-    output_pred["Vc(cm3/mol)"]=vvc
-    vCp=scaler_Cp.inverse_transform(output_pred[["Cp(J/kg/K)"]])
-    output_pred["Cp(J/mol K)"]=vCp
-
-    # Return the predictions
+    cal=model_LR_n2.predict(input_features,features)
+    
+    output_pred=features.copy()
+    output_pred["Calories Brulé"]=cal
+    
+    vcal=scaler_calories.inverse_transform(output_pred[["Calories Brulé"]])
+    output_pred["Calories Brulé"]=vcal
+    
+    #Valeurs de sortie 
 
     return output_pred
     #fig, ax = plt.subplots(figsize=(4, 4))
@@ -85,119 +72,163 @@ def predict(input_features):
 
 def main():
 
-    st.title('Prediction des valeurs de (Tc,Pc,Vc,Cp) pour un corps pur')
+    st.title('')
 
-    st.write("**Un résumé des propriétés critiques s'impose :**")
+    st.write("****")
 
-    st.write("ci-dessous deux graphes explicatif des propriétés critiques")
-    st.image("courbe tc pc.jpg",width=300)
-    st.image("vc.jpg")
-    st.write("Les applications sont :\n\n 1. Thermodynamique des fluides \n\n 2. Conception d'équipements industriels \n\n 3. Technologies supercritiques \n\n 4. Simulation et prédiction des mélanges \n\n 5. Transitions de phase \n\n 6. Industrie du pétrole et du gaz naturel \n\n 7. Production et transport d'énergie \n\n 8. Sécurité industrielle")
+    st.write("")
 
-    st.write("**Ci-dessous un explicatif de la capacité calorifique à pression constante (Cp) :**")
-    st.write("Chaleur nécessaire : 𝐶𝑝, indique la quantité d'énergie thermique qu'il faut fournir pour augmenter la température d'un matériau ou d'un fluide à pression constante.\n\n Applications pratiques : En chimie et en physique pour étudier les réactions thermiques. En ingénierie pour concevoir des systèmes thermiques, comme les moteurs et les échangeurs de chaleur.")
     
-    st.write('**Remplissez les champs pour avoir la prediction**')
 
 
-    # Create input fields for user to enter data tc
+    # création des champs pour le remplissage
 
-    d20=st.number_input("densité à 20°C Kg/m3", min_value=0.0, format="%.2f")
-    encodedd20=scaler_d420.transform([[d20]])[0][0]
+    age=st.number_input("Votre Age", min_value=1)
+    encodedage=scaler_age.transform([[age]])[0][0]
 
-    n20=st.number_input("indice de refraction à 20°C", min_value=0.0, format="%.6f")
-    encodedn20=scaler_n20.transform([[n20]])[0][0]
+    poids=st.number_input("Votre poids", min_value=0.0,format="%.1f") 
+    encodedpoids=scaler_weight.transform([[poids]])[0][0]
 
-    Tb=st.number_input("Température d'ébullition en °K", format="%.2f")
-    encodedTb=scaler_tb.transform([[Tb]])[0][0]
+    height=st.number_input("votre mesure 'en Metre' ",min_value=0.5, format="%.2f")
+    encodedheight=scaler_height.transform([[height]])[0][0]
 
-    MM=st.number_input("masse molaire en g/mol", min_value=0.0, format="%.6f")
-    encodedMM=scaler_MM.transform([[MM]])[0][0]
+    max_bpm=st.number_input("Vos batement de coeur maximal en cours de séance", min_value=0)
+    encodedmax_bpm=scaler_max_bpm.transform([[max_bpm]])[0][0]
 
-    nbH=st.number_input("nombre d'hydrogène", min_value=1)
-
-
-    nbC=st.number_input("nombre de carbone", min_value=1)
-    data_to_transform = [[nbH, nbC]]
-
-    # Appliquez la transformation
-    transformed_data = scaler_ncnh.transform(data_to_transform)
-
-    # Récupérez les valeurs transformées
-    encodednbH, encodednbC = transformed_data[0][0], transformed_data[0][1]
+   
 
 
-    famille=st.selectbox("choisir la famille de votre corps",["aromatiques","i-paraffines","n-paraffines","naphtènes","oléfines", "alcynes"])
+    avg_bpm=st.number_input("nombre de carbone", min_value=1)
+    encodedavg_bpm = scaler_avg_bpm.transform([[avg_bpm]])[0][0]
 
-        # Add more input fields as needed
+    rest_bpm=st.number_input("BPM pendant la pause", min_value=0)
+    encodedrest_bpm=scaler_rest_bpm.transform([[rest_bpm]])[0][0]
 
+    tpsession=st.number_input("Durée de la séance en heure", min_value=0.0,format="%.1f")
+    encodedtpsession=scaler_tpsession.transform([[tpsession]])[0][0]
+
+    hanches=st.number_input("tour des hanches en 'cm'(voir le schéma)", min_value=0.0,format="%.2f")
+    taille=st.number_input("tour de taille en 'cm'(voir le schéma)", min_value=0.0,format="%.2f")
+    cou=st.number_input("tour de cou en 'cm'(voir le schéma)", min_value=0.0,format="%.2f")
+
+    water=st.number_input("Quantité d'eau bu par jour 'en Litre'", min_value=0.0,format="%.2f")
+    encodedwater=scaler_water.transform([[water]])[0][0] 
+
+    xp=st.selectbox("choir l'experience que vous avez dans la salle",["débutant","moyen","expert"])
+    if xp=="débutant":
+      encodedxp=scaler_exp.transform([[1]])[0][0]
+    elif xp=="moyen":
+      encodedxp=scaler_exp.transform([[2]])[0][0]
+    elif xp=="expert":
+      encodedxp=scaler_exp.transform([[3]])[0][0]
+    
+    freq=st.selectbox("Combien de fois ar semaine",["1","2","3","4","5","6","7"])
+    if freq=="1":
+      encodedfreq=scaler_freq.transform([[1]])[0][0]
+    elif freq=="2":
+      encodedfreq=scaler_freq.transform([[2]])[0][0]
+    elif freq=="3":
+      encodedfreq=scaler_freq.transform([[3]])[0][0]
+    elif freq=="4":
+      encodedfreq=scaler_freq.transform([[4]])[0][0]
+    elif freq=="5":
+      encodedfreq=scaler_freq.transform([[5]])[0][0]
+    elif freq=="6":
+      encodedfreq=scaler_freq.transform([[6]])[0][0]
+    elif freq=="7":
+      encodedfreq=scaler_freq.transform([[7]])[0][0]
+    
+    bmi=age/((height)**2)
+    encodedbmi=scaler_bmi.transform([[bmi]])[0][0]
+    
+    genre=st.selectbox("votre genre",["homme","femme"])
+    if genre=="homme":
+      encodedgenre=1
+      x=taille-cou
+      fat=86.010*np.log10(x)-70.041*np.log10(taille)+36.76
+      encodedfat=scaler_fat.transform([[fat]])[0][0]
+    elif genre=="femme":
+      encodedgenre=0
+      x=taille+hanches-cou
+      fat=163.205*np.log10(x)-97.684*np.log10(taille)-78.387
+      encodedfat=scaler_fat.transform([[fat]])[0][0]
+      
+    type_entrainnement=st.selectbox("Type d'entrainnement : ",["Yoga","Crossfit","Cardio","Muscu"])
+    
+    
     # Combine input features into a DataFrame
 
+    features = {
+
+    'age': [age],
+    "genre": [genre],
+    'poids': [poids],
+    'mesure': [height],
+    'max_bpm': [max_bpm],
+    'avg_bpm': [avg_bpm],
+    'rest_bpm': [rest_bpm],
+    'fat_pourcentage': [fat],
+    'frequence': [freq],
+    'experience': [xp],
+    "temps d'entrainnement":[tpsession],
+    "quantité_H2O":[water],
+    "IMC" :[bmi],
+    "type d'entrainnement": [type_entrainnement],
+    "Xp":[xp]
+}
     input_data = {
 
-    'd20(Kg/m3)': [encodedd20],
-    'n20': [encodedn20],
-    'Tb(K)': [encodedTb],
-    'MM(g/mole)': [encodedMM],
-    'famille': [famille],
-    'nbH': [encodednbH],
-    'nbC': [encodednbC]
-
+    'Age': [encodedage],
+    'Weight (kg)':[encodedpoids],
+    'Height (m)': [encodedheight],
+    'Max_BPM': [encodedmax_bpm],
+    'Avg_BPM': [encodedavg_bpm],
+    'Resting_BPM': [encodedrest_bpm],
+    'Session_Duration (hours)': [encodedtpsession],
+    'Fat_Percentage': [encodedfat],
+    'Water_Intake (liters)': [encodedwater],
+    'Workout_Frequency (days/week)': [encodedfreq],
+    'Experience_Level': [encodedxp],
+    'BMI': [encodedbmi],
+    'Gender_Male': [encodedgenre],
+    'Workout_Type_HIIT': [0],
+    'Workout_Type_Strength': [0],
+    'Workout_Type_Yoga': [0]
 }
 
-# Création du DataFrame
+
+    # Création du DataFrame
     input_data = pd.DataFrame(input_data)
+    features = pd.DataFrame(features)
+    #encodage du type d'entrainnement
+    
 
-    #encodage de famille
+    if type_entrainnement=="Cardio":
+      pass
+    elif type_entrainnement=="Yoga":
+      input_data["Workout_Type_Yoga"]=1
+    elif type_entrainnement=="Crossfit":
+      input_data["Workout_Type_HIIT"]=1
+    elif type_entrainnement=="Muscu":
+      input_data["Workout_Type_Strength"]=1
 
-    family =["famille_aromatiques","famille_i-paraffines","famille_n-paraffines","famille_naphtènes","famille_oléfines"]
-    for i in family:
-      input_data[i]=0
-    for i in range(0,len(input_data)):
-      if famille=="n-paraffines":
-        input_data["famille_n-paraffines"]=1
-      elif famille=="i-paraffines":
-        input_data["famille_i-paraffines"]=1
-      elif famille=="oléfines":
-        input_data["famille_oléfines"]=1
-      elif famille=="alcynes":
-        continue
-      elif famille=="aromatiques":
-        input_data["famille_aromatiques"]=1
-      elif famille=="naphtènes":
-        input_data["famille_naphtènes"]=1
-    input_data=input_data.drop("famille",axis=1)
+    
+    
 
 
 
-    if st.button('Predictions'):
+    if st.button('Combien je brule...'):
 
-        prediction = predict(input_data)
+        prediction = predict(input_data,features)
         
-        tc=prediction.loc[0, "Tc(K)"]
-        pc=prediction.loc[0, "Pc(bar)"]
-        vc=prediction.loc[0, "Vc(cm3/mol)"]
-        cp=prediction.loc[0, "Cp(J/mol K)"]
-        st.write("Les Predictions sont :\n\n Tc(K) =" ,tc,"\n\n Pc(bar) =",pc ,"\n\n Vc(cm3/mol) =",vc , "\n\n Cp(J/mol K) =",cp)
+        
 
         st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237" )
 
         # URL de Google Drive (assurez-vous que c'est un lien de téléchargement direct)
         url = "https://drive.google.com/uc?export=download&id=1mdMdvXYGiowfy3UwNtMBCAllv7wt1DUT"  # Exemple d'ID
         
-        # Téléchargement du fichier avec requests
-        response = requests.get(url, stream=True)
-        
-        # Sauvegarder l'image téléchargée dans un fichier temporaire
-        image_path = "moi.jpg"
-        with open(image_path, 'wb') as file:
-            for chunk in response.iter_content(chunk_size=128):
-                file.write(chunk)
-        st.image(image_path)
 
-
-
-        #https://drive.google.com/file/d/1mdMdvXYGiowfy3UwNtMBCAllv7wt1DUT/view?usp=sharing
 
 
 
