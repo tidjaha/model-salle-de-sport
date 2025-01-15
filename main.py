@@ -70,13 +70,17 @@ def predict(input_features,features):
 
 def main():
 
-    st.title('**Ce site prédit les calories que vous brulé lors de votre séance de sport ! il calcul aussi l'IMC et le pourcentage de graisse dans le corps**')
+    st.title("**Ce site prédit les calories que vous brulé lors de votre séance de sport ! il calcul aussi l'IMC et le pourcentage de graisse dans le corps**")
 
     st.write("**Tout d'abord voici quelques notions !**")
 
     st.write("Notre corps a besoin de 2 000 à 3 000 kcal par jour pour bien fonctionner. Si vous souhaitez perdre du poids, vous devez être en déficit calorique. Voici quelques plats avec leurs apports caloriques :")
 
-
+    st.write("**Petits-déjeuners**")
+    st.write("- Omelette nature (2 œufs, 10 g de beurre) : ~200 kcal")
+    st.write("- Bol de flocons d’avoine (40 g avec 200 ml de lait demi-écrémé) : ~250 kcal")
+    st.write("- Tartines (2 tranches de pain complet avec 10 g de beurre et 10 g de confiture) : ~300 kcal")
+    
     st.write("**Déjeuners/Dîners :** ")
     st.write("- Poulet rôti (150 g) avec légumes vapeur (200 g) : ~350 kcal")
     st.write("- Steak haché (150 g) avec purée de pommes de terre (150 g) : ~400 kcal")
