@@ -44,7 +44,7 @@ def predict(input_features,features):
 
     # Make predictions using the loaded model
 
-    input_poly=poly(input_features)
+    input_poly=poly.transform(input_features)
     cal=model_LR_n2.predict(input_poly)
     
     output_pred=features.copy()
