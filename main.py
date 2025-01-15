@@ -38,13 +38,13 @@ scaler_bmi=joblib.load("scaler_bmi.pkl")
 
 # Define function to make predictions
 
-def predict(input_features):
+def predict(input_features,features):
 
     # Perform any necessary preprocessing on the input_features
 
     # Make predictions using the loaded model
 
-    cal=model_LR_n2.predict(input_features,features)
+    cal=model_LR_n2.predict(input_features)
     
     output_pred=features.copy()
     output_pred["Calories Brulé"]=cal
