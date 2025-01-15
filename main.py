@@ -81,38 +81,38 @@ def main():
 
     # création des champs pour le remplissage
 
-    age=st.number_input("Votre Age", min_value=1)
+    age=st.number_input("Votre Age", min_value=6)
     encodedage=scaler_age.transform([[age]])[0][0]
 
-    poids=st.number_input("Votre poids", min_value=0.0,format="%.1f") 
+    poids=st.number_input("Votre poids", min_value=20.0,format="%.1f") 
     encodedpoids=scaler_weight.transform([[poids]])[0][0]
 
     height=st.number_input("votre mesure 'en Metre' ",min_value=0.5, format="%.2f")
     encodedheight=scaler_height.transform([[height]])[0][0]
 
-    max_bpm=st.number_input("Vos batement de coeur maximal en cours de séance", min_value=0)
+    max_bpm=st.number_input("Vos batements de coeur maximal durant la séance", min_value=40)
     encodedmax_bpm=scaler_max_bpm.transform([[max_bpm]])[0][0]
 
    
 
 
-    avg_bpm=st.number_input("nombre de carbone", min_value=1)
+    avg_bpm=st.number_input("Batement de votre coeur moyen durant la séance", min_value=40)
     encodedavg_bpm = scaler_avg_bpm.transform([[avg_bpm]])[0][0]
 
     rest_bpm=st.number_input("BPM pendant la pause", min_value=0)
     encodedrest_bpm=scaler_rest_bpm.transform([[rest_bpm]])[0][0]
 
-    tpsession=st.number_input("Durée de la séance en heure", min_value=0.0,format="%.1f")
+    tpsession=st.number_input("Durée de la séance en 'heure'", min_value=0.5,format="%.1f")
     encodedtpsession=scaler_tpsession.transform([[tpsession]])[0][0]
 
-    hanches=st.number_input("tour des hanches en 'cm'(voir le schéma)", min_value=0.0,format="%.2f")
-    taille=st.number_input("tour de taille en 'cm'(voir le schéma)", min_value=0.0,format="%.2f")
-    cou=st.number_input("tour de cou en 'cm'(voir le schéma)", min_value=0.0,format="%.2f")
+    hanches=st.number_input("Tour des hanches en 'cm'(voir le schéma)", min_value=10.0,format="%.2f")
+    taille=st.number_input("Tour de taille en 'cm'(voir le schéma)", min_value=8.0,format="%.2f")
+    cou=st.number_input("Tour de cou en 'cm'(voir le schéma)", min_value=05.0,format="%.2f")
 
-    water=st.number_input("Quantité d'eau bu par jour 'en Litre'", min_value=0.0,format="%.2f")
+    water=st.number_input("Quantité d'eau bu par jour en 'Litre'", min_value=0.5,format="%.2f")
     encodedwater=scaler_water.transform([[water]])[0][0] 
 
-    xp=st.selectbox("choir l'experience que vous avez dans la salle",["débutant","moyen","expert"])
+    xp=st.selectbox("Ton experience dans la salle",["débutant","moyen","expert"])
     if xp=="débutant":
       encodedxp=scaler_exp.transform([[1]])[0][0]
     elif xp=="moyen":
@@ -120,7 +120,7 @@ def main():
     elif xp=="expert":
       encodedxp=scaler_exp.transform([[3]])[0][0]
     
-    freq=st.selectbox("Combien de fois ar semaine",["1","2","3","4","5","6","7"])
+    freq=st.selectbox("Combien de fois je vais à la salle par semaine",["1","2","3","4","5","6","7"])
     if freq=="1":
       encodedfreq=scaler_freq.transform([[1]])[0][0]
     elif freq=="2":
@@ -221,7 +221,7 @@ def main():
         
         
 
-        st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237" )
+        st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237 \n\n",predict  )
 
         # URL de Google Drive (assurez-vous que c'est un lien de téléchargement direct)
         url = "https://drive.google.com/uc?export=download&id=1mdMdvXYGiowfy3UwNtMBCAllv7wt1DUT"  # Exemple d'ID
