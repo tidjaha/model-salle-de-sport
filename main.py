@@ -44,7 +44,8 @@ def predict(input_features,features):
 
     # Make predictions using the loaded model
 
-    cal=model_LR_n2.predict(input_features)
+    input_poly=poly(input_features)
+    cal=model_LR_n2.predict(input_poly)
     
     output_pred=features.copy()
     output_pred["Calories Brulé"]=cal
