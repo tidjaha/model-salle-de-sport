@@ -70,32 +70,32 @@ def predict(input_features,features):
 
 def main():
 
-    st.title('**Ce site prédit les calories que vous brulé lors de votre séance de sport !**')
+    st.title('**Ce site prédit les calories que vous brulé lors de votre séance de sport ! il calcul aussi l'IMC et le pourcentage de graisse dans le corps**')
 
     st.write("**Tout d'abord voici quelques notions !**")
 
     st.write("Notre corps a besoin de 2 000 à 3 000 kcal par jour pour bien fonctionner. Si vous souhaitez perdre du poids, vous devez être en déficit calorique. Voici quelques plats avec leurs apports caloriques :")
 
 
-    st.write("Déjeuners/Dîners : ")
-    st.write("Poulet rôti (150 g) avec légumes vapeur (200 g) : ~350 kcal")
-    st.write("Steak haché (150 g) avec purée de pommes de terre (150 g) : ~400 kcal")
-    st.write("Salade composée (laitue, tomates, 100 g de poulet, 10 g de vinaigrette) : ~250 kcal")
-    st.write("Pâtes à la bolognaise (200 g de pâtes, 100 g de sauce) : ~500 kcal")
-    st.write("Pizza margherita (1 part, environ 150 g) : ~350 kcal")
-    st.write("Encas")
-    st.write("Barre de céréales (30 g) : ~120 kcal")
-    st.write("Yaourt nature sucré (125 g) : ~100 kcal")
-    st.write("Pomme moyenne (150 g) : ~80 kcal")
-    st.write("Poignée d’amandes (30 g) : ~180 kcal")
-    st.write("Desserts")
-    st.write("Tarte aux pommes (1 part, environ 100 g) : ~250 kcal")
-    st.write("Mousse au chocolat (1 portion, environ 100 g) : ~200 kcal")
-    st.write("Glace (2 boules, environ 100 g) : ~150 kcal")
+    st.write("**Déjeuners/Dîners :** ")
+    st.write("- Poulet rôti (150 g) avec légumes vapeur (200 g) : ~350 kcal")
+    st.write("- Steak haché (150 g) avec purée de pommes de terre (150 g) : ~400 kcal")
+    st.write("- Salade composée (laitue, tomates, 100 g de poulet, 10 g de vinaigrette) : ~250 kcal")
+    st.write("- Pâtes à la bolognaise (200 g de pâtes, 100 g de sauce) : ~500 kcal")
+    st.write("- Pizza margherita (1 part, environ 150 g) : ~350 kcal")
+    st.write("**Encas : **")
+    st.write("- Barre de céréales (30 g) : ~120 kcal")
+    st.write("- Yaourt nature sucré (125 g) : ~100 kcal")
+    st.write("- Pomme moyenne (150 g) : ~80 kcal")
+    st.write("- Poignée d’amandes (30 g) : ~180 kcal")
+    st.write("** Desserts : **")
+    st.write("- Tarte aux pommes (1 part, environ 100 g) : ~250 kcal")
+    st.write("- Mousse au chocolat (1 portion, environ 100 g) : ~200 kcal")
+    st.write("- Glace (2 boules, environ 100 g) : ~150 kcal")
 
 
-    st.image('')
-    st.write("")
+    #st.image('')
+    #st.write("")
 
 
 
