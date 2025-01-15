@@ -250,7 +250,7 @@ def main():
           conseil_bmi="vous êtes en sous-poids, essayé de ne pas sauter les repas et manger regulièrement avec de l'excercice"
         else:
           if bmi<25:
-            conseil_bmi="votre poids est normal cependant essayer de prendre du muscle.
+            conseil_bmi="votre poids est normal cependant essayer de prendre du muscle"
           else:
             if bmi<30:
               conseil_bmi="vous êtes en surpoids, essayer d'augmenter les heures de vos seances par semaine ou de changer de type d'excercises"
@@ -328,22 +328,8 @@ def main():
                       conseil_fat="vous avez un taux de graisse élevé et vous etes en surpoids, faite plus exercises a fin de perdre du poids et transformer votre graisse en muscle, essayer par exemple d'augmenter vos heures en salle par semaine"
                 else:
                   conseil_fat="vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime"
+            st.write(conseil_fat) 
 
-'age': [age],
-    "genre": [genre],
-    'poids': [poids],
-    'mesure': [height],
-    'max_bpm': [max_bpm],
-    'avg_bpm': [avg_bpm],
-    'rest_bpm': [rest_bpm],
-    'fat_pourcentage': [fat],
-    'frequence': [freq],
-    'experience': [xp],
-    "temps d'entrainnement":[tpsession],
-    "quantité_H2O":[water],
-    "IMC" :[bmi],
-    "type d'entrainnement": [type_entrainnement],
-    "Xp":[xp]
 
 
 
