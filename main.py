@@ -143,12 +143,18 @@ def main():
     if genre=="homme":
       encodedgenre=1
       x=taille-cou
-      fat=86.010*np.log10(x)-70.041*np.log10(taille)+36.76
+      fat =(495/(1.0324 - 0.19077*np.log10(x) + 0.15456*np.log10(height*100)))- 450
+
+
+      
+      
       encodedfat=scaler_fat.transform([[fat]])[0][0]
     elif genre=="femme":
       encodedgenre=0
       x=taille+hanches-cou
-      fat=163.205*np.log10(x)-97.684*np.log10(taille)-78.387
+     
+      fat=(495/(1.29579 - 0.35004*np.log10(x) + 0.22100*np.log10(height*100)))- 450
+
       encodedfat=scaler_fat.transform([[fat]])[0][0]
       
     type_entrainnement=st.selectbox("Type d'entrainnement : ",["Yoga","Crossfit","Cardio","Muscu"])
