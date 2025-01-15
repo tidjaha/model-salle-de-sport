@@ -136,7 +136,7 @@ def main():
     elif freq=="7":
       encodedfreq=scaler_freq.transform([[7]])[0][0]
     
-    bmi=age/((height)**2)
+    bmi=poids/((height)**2)
     encodedbmi=scaler_bmi.transform([[bmi]])[0][0]
     
     genre=st.selectbox("votre genre",["homme","femme"])
