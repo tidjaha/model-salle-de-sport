@@ -337,7 +337,7 @@ def main():
         conseil=[[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"fat_pourcentage"],conseil_fat]]
         conseil=pd.DataFrame(conseil, columns=["I.M.C","Conseil imc","Taux de graisse","Conseil graisse"])
         conseil=conseil.reset_index(drop=True)
-        st.table(conseil)
+        st.table(conseil.reset_index(drop=True))
         st.dataframe(conseil)
 
 
