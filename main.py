@@ -335,10 +335,10 @@ def main():
         st.write(conseil_fat) 
 
         conseil=[[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"fat_pourcentage"],conseil_fat]]
-        conseil=pd.DataFrame(conseil, columns=["I.M.C","Conseil imc","Taux de graisse","Conseil graisse"])
-        conseil=conseil.to_string(index=False)
-        st.table(conseil)
-        st.dataframe(conseil)
+        conseils=pd.DataFrame(conseil, columns=["I.M.C","Conseil imc","Taux de graisse","Conseil graisse"])
+        
+        st.table(conseils)
+        
 
 
         st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237 \n\n",prediction  )
