@@ -87,12 +87,12 @@ def main():
     st.write("- Salade composée (laitue, tomates, 100 g de poulet, 10 g de vinaigrette) : ~250 kcal")
     st.write("- Pâtes à la bolognaise (200 g de pâtes, 100 g de sauce) : ~500 kcal")
     st.write("- Pizza margherita (1 part, environ 150 g) : ~350 kcal")
-    st.write("**Encas : **")
+    st.write("**Encas :**")
     st.write("- Barre de céréales (30 g) : ~120 kcal")
     st.write("- Yaourt nature sucré (125 g) : ~100 kcal")
     st.write("- Pomme moyenne (150 g) : ~80 kcal")
     st.write("- Poignée d’amandes (30 g) : ~180 kcal")
-    st.write("** Desserts : **")
+    st.write("**Desserts :**")
     st.write("- Tarte aux pommes (1 part, environ 100 g) : ~250 kcal")
     st.write("- Mousse au chocolat (1 portion, environ 100 g) : ~200 kcal")
     st.write("- Glace (2 boules, environ 100 g) : ~150 kcal")
@@ -332,7 +332,7 @@ def main():
                       conseil_fat="vous avez un taux de graisse élevé et vous etes en surpoids, faite plus exercises a fin de perdre du poids et transformer votre graisse en muscle, essayer par exemple d'augmenter vos heures en salle par semaine"
                 else:
                   conseil_fat="vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime"
-            st.write(conseil_fat) 
+        st.write(conseil_fat) 
 
 
 
