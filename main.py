@@ -118,7 +118,7 @@ def main():
     age=st.number_input("**Votre Age !**", min_value=6)
     encodedage=scaler_age.transform([[age]])[0][0]
 
-    poids=st.number_input("**Votre poids !**", min_value=20.0,format="%.1f")
+    poids=st.number_input("**Votre poids (en Kg) !**", min_value=20.0,format="%.1f")
     encodedpoids=scaler_weight.transform([[poids]])[0][0]
 
     height=st.number_input("**Votre taille (en Metre) !** ",min_value=0.5, format="%.2f")
@@ -330,15 +330,15 @@ def main():
         st.write("Votre taux de graisse est :",prediction.loc[0,"fat_pourcentage"],"%")
         st.write(conseil_fat)
 
+        st.write("**De manière général, plus vous tardez en salle plus vous brulez de calories, vous pouvez aussi changer votre type d'exercice pour brulez plus, la frequence aussi impact !**")
+
         
         
         
 
-        st.write("Copyrights tidjaha 2025 \n\n https://github.com/tidjaha/model-salle-de-sport")
+        st.write("Copyrights tidjaha jan-2025 !\n\n https://github.com/tidjaha/model-salle-de-sport")
 
-        # URL de Google Drive (assurez-vous que c'est un lien de téléchargement direct)
-        url = "https://drive.google.com/uc?export=download&id=1mdMdvXYGiowfy3UwNtMBCAllv7wt1DUT"  # Exemple d'ID
-
+        
 
 
 
