@@ -335,7 +335,7 @@ def main():
         st.write(conseil_fat) 
 
         conseil=[[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"fat_pourcentage"],conseil_fat]]
-        conseil=pd.DataFrame(conseil, columns=["I.M.C","Conseil","Pourcentage de graisse","Conseil"])
+        conseil=pd.DataFrame(conseil, columns=["I.M.C","Conseil_imc","Pourcentage de graisse","Conseil_graisse"])
         st.table(conseil)
         st.dataframe(conseil)
 
