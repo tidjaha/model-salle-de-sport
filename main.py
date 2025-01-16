@@ -330,7 +330,7 @@ def main():
         st.write("Votre taux de graisse est :",prediction.loc[0,"fat_pourcentage"],"%")
         st.write(conseil_fat)
 
-        st.write("**De manière général, plus vous tardez en salle plus vous brulez de calories, vous pouvez aussi changer votre type d'exercice pour brulez plus, la frequence aussi impact !**")
+        st.write("**De manière générale, plus vous passez de temps en salle, plus vous brûlez de calories. Vous pouvez également changer votre type d'exercice pour brûler davantage. La fréquence a également un impact !**")
 
         
         
