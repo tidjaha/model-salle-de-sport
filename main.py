@@ -355,6 +355,7 @@ def main():
         
         # Afficher dans Streamlit avec st.table()
         st.table(df_reset)
+        st.metric(df_reset)
 
         st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237 \n\n",prediction  )
 
