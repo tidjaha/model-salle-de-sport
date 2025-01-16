@@ -99,7 +99,7 @@ def main():
 
     st.title("**Voici quelques notion pour vous aider à remplir le champs**")
 
-    st.swrite("Figure 1")
+    st.write("Figure 1")
     st.image("test.jpg")
 
     st.write("I.M.C : Indice de Masse Corporelle ")
