@@ -250,89 +250,73 @@ def main():
 
         prediction = predict(input_data,features)
 
-        if bmi<18.4:
-          conseil_bmi="vous êtes en sous-poids, essayé de ne pas sauter les repas et manger regulièrement avec de l'excercice"
-        else:
-          if bmi<25:
-            conseil_bmi="votre poids est normal cependant essayer de prendre du muscle"
-          else:
-            if bmi<30:
-              conseil_bmi="vous êtes en surpoids, essayer d'augmenter les heures de vos seances par semaine ou de changer de type d'excercises, regardez aussi votre pourcentage de graisse ce qui recommande"
-            else:
-              if bmi<35:
-                conseil_bmi="Vous êtes obèse modéré, essayer d'augmenter les heures de vos seances par semaine ou de changer de type d'excercises avec un régime, regardez aussi votre pourcentage de graisse ce qui recommande"
-              else:
-                if bmi<40:
-                  conseil_bmi=" **obésité sévère**, faite attention à votre santé et consulter un nutritioniste avec plus d'heures en salle par semaine, regardez aussi votre pourcentage de graisse ce qui recommande"
-                else:
-                  conseil_bmi=" **obésité morbide**, faite attention à votre santé et consulter un nutritioniste avec plus d'heures en salle par semaine, regardez aussi votre pourcentage de graisse ce qui recommande"
-        st.write(conseil_bmi)
+
 
         if genre=="homme":
           if fat<5:
             if bmi<18.4:
-              conseil_fat="vous avez ce que l'on appelle graisse essentielle cepnedant essayer de prendre du poids un peu de graisse et des muscles"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des excercises ou vous allez prendre des muscles !**"
             else:
-              conseil_fat="vous avez ce que l'on a appelle essentielle cependant mais vous avez un poids est elevé ce qui veut dire que vous etes bien musclé !"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes excercises !***"
           else:
             if fat<13:
               if bmi<18.4:
-                conseil_fat="vous avez un taux de graisse dit d'un athlete cependant votre poids reste inferieur à la norme essayer de prendre du poids avec du muscle en faisant des exercises musculaire au lieu de la graisse"
+                conseil_fat="**Vous avez un taux de graisse dit d'un athlete, cependant votre poids reste inferieur à la norme essayer de prendre du poids en favorisant des exercises musculaire !**"
               else:
-                conseil_fat="vous avez un taux de graisse dit d'un athlete cependant votre poids reste elevé ce qui veut dire que vous etes bien musclé !"
+                conseil_fat="**Vous avez un taux de graisse dit d'un athlete, cependant votre poids est elevé ce qui veut dire que vous etes bien musclé !**"
             else:
               if fat<17:
                 if bmi<18.4:
-                  conseil_fat="vous avez un taux de graisse normal cependant votre poids reste inferieur à la norme essayer de prendre du poids avec du muscle en faisant des exercises musculaire au lieu de la graisse"
+                  conseil_fat="**Vous avez un taux de graisse normal cependant votre poids reste inferieur à la norme essayer de prendre du poids avec du muscle en faisant des exercises musculaire !**"
                 else:
                   if bmi<25:
-                    conseil_fat="vous avez un taux de graisse normal et un poids normal ce qui veut dire que vous avez un corps bien taillé !"
+                    conseil_fat="**Vous avez un taux de graisse normal et un poids normal ce qui veut dire que vous avez un corps bien taillé !**"
                   else:
-                    conseil_fat="vous avez un taux de graisse normal cependant votre poids reste elevé ce qui veut dire que vous etes bien musclé !"
+                    conseil_fat="**Vous avez un taux de graisse normal cependant votre poids reste elevé ce qui veut dire que vous etes bien musclé !**"
               else:
                 if fat<24:
                   if bmi<18.4:
-                    conseil_fat="vous avez un taux de graisse élevé cependant votre poids reste inferieur à la norme essayer ce qui veut dire que vous avez peu de muscle essayer de privéligier des excercises pour vous musclez"
+                    conseil_fat="**Vous avez un taux de graisse élevé, cependant votre poids reste inferieur à la norme, ce qui veut dire que vous avez peu de muscle essayer de privéligier des excercises pour vous muscler !**"
                   else:
                     if bmi<25:
-                      conseil_fat="vous avez un taux de graisse élevé et un poids normal ce qui veut dire vous avez trop de graisse et peu de muscle essayer de faire plus d'exercises de muscle"
+                      conseil_fat="**Vous avez un taux de graisse élevé et un poids normal ce qui veut dire vous avez trop de graisse et peu de muscle essayer de faire plus d'exercises de musculation !**"
                     else:
-                      conseil_fat="vous avez un taux de graisse élevé et vous etes en surpoids, faite plus exercises a fin de perdre du poids et transformer votre graisse en muscle, essayer par exemple d'augmenter vos heures en salle par semaine"
+                      conseil_fat="**Vous avez un taux de graisse élevé et vous êtes en surpoids, faite plus exercises a fin de perdre du poids et transformer votre graisse en muscle, essayer par exemple d'augmenter vos heures en salle par semaine.**"
                 else:
-                  conseil_fat="vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime"
+                  conseil_fat="**Vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime !**"
         else:
           if fat<13:
             if bmi<18.4:
-              conseil_fat="vous avez ce que l'on a appelle essentielle cepedant essayer de prendre du poids un peu de graisse et des muscle"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des excercises ou vous allez prendre des muscles !**"
             else:
-              conseil_fat="vous avez ce que l'on a appelle essentielle cependant mais vous avez un poids est elevé ce qui veut dire que vous etes bien musclé !"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes excercises !***"
           else:
             if fat<20:
               if bmi<18.4:
-                conseil_fat="vous avez un taux de graisse dit d'un athlete cependant votre poids reste inferieur à la norme essayer de prendre du poids avec du muscle en faisant des exercises musculaire au lieu de la graisse"
+                conseil_fat="**Vous avez un taux de graisse dit d'un athlete, cependant votre poids reste inferieur à la norme essayer de prendre du poids en favorisant des exercises musculaire !**"
               else:
-                conseil_fat="vous avez un taux de graisse dit d'un athlete cependant votre poids reste elevé ce qui veut dire que vous etes bien musclé !"
+                conseil_fat="**Vous avez un taux de graisse dit d'un athlete, cependant votre poids reste elevé ce qui veut dire que vous êtes bien musclé !**"
             else:
               if fat<24:
                 if bmi<18.4:
-                  conseil_fat="vous avez un taux de graisse normal cependant votre poids reste inferieur à la norme essayer de prendre du poids avec du muscle en faisant des exercises musculaire au lieu de la graisse"
+                  conseil_fat="**Vous avez un taux de graisse normal, cependant votre poids reste inferieur à la norme essayer de prendre du poids avec du muscle en faisant des exercises musculaire !**"
                 else:
                   if bmi<25:
-                    conseil_fat="vous avez un taux de graisse normal et un poids normal ce qui veut dire que vous avez un corps bien taillé !"
+                    conseil_fat="**Vous avez un taux de graisse normal et un poids normal ce qui veut dire que vous avez un corps bien taillé !**"
                   else:
-                    conseil_fat="vous avez un taux de graisse normal cependant votre poids reste elevé ce qui veut dire que vous etes bien musclé !"
+                    conseil_fat="**Vous avez un taux de graisse normal, cependant votre poids reste elevé ce qui veut dire que vous êtes bien musclé !**"
               else:
                 if fat<31:
                   if bmi<18.4:
-                    conseil_fat="vous avez un taux de graisse élevé cependant votre poids reste inferieur à la norme essayer ce qui veut dire que vous avez peu de muscle essayer de privéligier des excercises pour vous musclez"
+                    conseil_fat="**Vous avez un taux de graisse élevé cependant votre poids reste inferieur à la norme essayer ce qui veut dire que vous avez peu de muscle essayer de privéligier des exercises de musculation !**"
                   else:
                     if bmi<25:
-                      conseil_fat="vous avez un taux de graisse élevé et un poids normal ce qui veut dire vous avez trop de graisse et peu de muscle essayer de faire plus d'exercises de muscle"
+                      conseil_fat="**Vous avez un taux de graisse élevé et un poids normal ce qui veut dire vous avez trop de graisse et peu de muscle, essayer de faire plus d'exercises de muscu !**"
                     else:
-                      conseil_fat="vous avez un taux de graisse élevé et vous etes en surpoids, faite plus exercises a fin de perdre du poids et transformer votre graisse en muscle, essayer par exemple d'augmenter vos heures en salle par semaine"
+                      conseil_fat="**Vous avez un taux de graisse élevé et vous êtes en surpoids, faite plus exercises a fin de perdre du poids et transformer votre graisse en muscle, essayer par exemple d'augmenter vos heures en salle par semaine !**"
                 else:
-                  conseil_fat="vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime"
-        st.write(conseil_fat) 
+                  conseil_fat="**Vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime !**"
+         
 
         st.write("En général lors de votre séance vous brulez",prediction.loc[0,"Calories Brulé"],"Kcal")
         st.write("Votre I.M.C est :",prediction.loc[0,"IMC"],"Kg/m2")
