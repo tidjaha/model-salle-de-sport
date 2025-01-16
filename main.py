@@ -338,7 +338,7 @@ def main():
         conseil=pd.DataFrame(conseil, columns=["I.M.C","Conseil imc","Taux de graisse","Conseil graisse"])
         
         st.table(conseil)
-        st.dataframe(conseil, hide_index=True, use_container_width=True, height=height)
+        st.dataframe(conseil, hide_index=True, use_container_width=True, height=400)
         
 
 
