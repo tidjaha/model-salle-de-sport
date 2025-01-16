@@ -334,10 +334,10 @@ def main():
                   conseil_fat="vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime"
         st.write(conseil_fat) 
 
-        conseil={
-            " I.M.C" : [prediction.loc[0,"IMC"],conseil_bmi]}
-        conseil=pd.DataFrame(conseil)
+        conseil=[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"Fat_Pourcentage"],conseil_fat]
+        conseil=pd.DataFrame(conseil, columns=["I.M.C","Conseil","Pourcentage de graisse","Conseil"])
         st.table(conseil)
+        st.dataframe(conseil)
 
 
         st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237 \n\n",prediction  )
