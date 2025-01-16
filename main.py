@@ -70,9 +70,9 @@ def predict(input_features,features):
 
 def main():
 
-    st.title("**Ce site prédit les calories que vous brulé lors de votre séance de sport ! il calcul aussi l'IMC et le pourcentage de graisse dans le corps**")
+    st.title("**Ce site prédit les calories que vous brulé lors de votre séance de sport ! il calcul aussi l'I.M.C et votre taux de graisse dans le corps**")
 
-    st.write("**Tout d'abord voici quelques notions !**")
+    st.write("**Tout d'abord voici quelques notions sur le bilan calorique !**")
 
     st.write("Notre corps a besoin de 2 000 à 3 000 kcal par jour pour bien fonctionner. Si vous souhaitez perdre du poids, vous devez être en déficit calorique. Voici quelques plats avec leurs apports caloriques :")
 
@@ -97,13 +97,13 @@ def main():
     st.write("- Mousse au chocolat (1 portion, environ 100 g) : ~200 kcal")
     st.write("- Glace (2 boules, environ 100 g) : ~150 kcal")
 
-    st.title("**Voici quelques notion pour vous aider à remplir le champs**")
+    st.title("**Voici quelques notions pour vous aider à remplir les champs**")
 
-    st.write("Figure 1")
+    st.write("Figure 1 :")
     st.image("test.jpg")
 
-    st.write("I.M.C : Indice de Masse Corporelle ")
-    st.write("BPM : Battement de votre coeur par minutes (valeure moyenne au repos entre 50-80 bpm, effort entre 170-190bpm)")
+    st.write("I.M.C : Indice de Masse Corporelle.")
+    st.write("BPM : Battement de votre cœur par minute (valeur moyenne au repos : entre 50 et 80 bpm ; à l'effort : entre 170 et 190 bpm).")
     
 
 
@@ -112,47 +112,33 @@ def main():
     st.title("**Remplissez les champs !**")
 
     # création des champs pour le remplissage
-
-    age=st.number_input("Votre Age", min_value=6)
+    
+    genre=st.selectbox("**Vous êtes un Homme ou une Femme ?**",["H","F"])
+    
+    age=st.number_input("**Votre Age !**", min_value=6)
     encodedage=scaler_age.transform([[age]])[0][0]
 
-    poids=st.number_input("Votre poids", min_value=20.0,format="%.1f")
+    poids=st.number_input("**Votre poids !**", min_value=20.0,format="%.1f")
     encodedpoids=scaler_weight.transform([[poids]])[0][0]
 
-    height=st.number_input("votre mesure -taille- 'en Metre' ",min_value=0.5, format="%.2f")
+    height=st.number_input("**Votre taille (en Metre) !** ",min_value=0.5, format="%.2f")
     encodedheight=scaler_height.transform([[height]])[0][0]
 
-    max_bpm=st.number_input("Vos battements de coeur maximal durant la séance", min_value=40)
-    encodedmax_bpm=scaler_max_bpm.transform([[max_bpm]])[0][0]
+    hanches=st.number_input("**Tour des hanches en cm (voir la fig 1) !**", min_value=10.0,format="%.2f")
+    taille=st.number_input("**Tour de taille en cm (voir la fig 1) !**", min_value=8.0,format="%.2f")
+    cou=st.number_input("**Tour de cou en cm (voir la fig 1) !**", min_value=05.0,format="%.2f")
 
-
-
-
-    avg_bpm=st.number_input("Batement de votre coeur moyen durant la séance", min_value=40)
-    encodedavg_bpm = scaler_avg_bpm.transform([[avg_bpm]])[0][0]
-
-    rest_bpm=st.number_input("BPM pendant la pause", min_value=0)
-    encodedrest_bpm=scaler_rest_bpm.transform([[rest_bpm]])[0][0]
-
-    tpsession=st.number_input("Durée de la séance en 'heure'", min_value=0.5,format="%.1f")
-    encodedtpsession=scaler_tpsession.transform([[tpsession]])[0][0]
-
-    hanches=st.number_input("Tour des hanches en 'cm'(voir la fig 1)", min_value=10.0,format="%.2f")
-    taille=st.number_input("Tour de taille en 'cm'(voir la fig 1)", min_value=8.0,format="%.2f")
-    cou=st.number_input("Tour de cou en 'cm'(voir la fig 1)", min_value=05.0,format="%.2f")
-
-    water=st.number_input("Quantité d'eau bu par jour en 'Litre'", min_value=0.5,format="%.2f")
-    encodedwater=scaler_water.transform([[water]])[0][0]
-
-    xp=st.selectbox("Ton experience dans la salle",["débutant","moyen","expert"])
+    type_entrainnement=st.selectbox("**Type d'exercice que vous faite à la salle !**",["Yoga","Crossfit","Cardio","Muscu"])
+    
+    xp=st.selectbox("**Ton experience dans la salle !**",["débutant","moyen","expert"])
     if xp=="débutant":
       encodedxp=scaler_exp.transform([[1]])[0][0]
     elif xp=="moyen":
       encodedxp=scaler_exp.transform([[2]])[0][0]
     elif xp=="expert":
       encodedxp=scaler_exp.transform([[3]])[0][0]
-
-    freq=st.selectbox("Combien de fois je vais à la salle par semaine",["1","2","3","4","5","6","7"])
+    
+    freq=st.selectbox("**Combien tu fais par semaine !**",["1","2","3","4","5","6","7"])
     if freq=="1":
       encodedfreq=scaler_freq.transform([[1]])[0][0]
     elif freq=="2":
@@ -168,28 +154,42 @@ def main():
     elif freq=="7":
       encodedfreq=scaler_freq.transform([[7]])[0][0]
 
+    tpsession=st.number_input("**Durée de la séance (en heure) !**", min_value=0.5,format="%.1f")
+    encodedtpsession=scaler_tpsession.transform([[tpsession]])[0][0]
+    
+    
+    
+    max_bpm=st.number_input("**BPM de votre coeur maximal durant la séance !**", min_value=40)
+    encodedmax_bpm=scaler_max_bpm.transform([[max_bpm]])[0][0]
+
+    avg_bpm=st.number_input("**BMP de votre coeur moyen durant la séance !**", min_value=40)
+    encodedavg_bpm = scaler_avg_bpm.transform([[avg_bpm]])[0][0]
+
+    rest_bpm=st.number_input("**BPM pendant la pause !**", min_value=0)
+    encodedrest_bpm=scaler_rest_bpm.transform([[rest_bpm]])[0][0]
+
+    water=st.number_input("**Quantité d'eau que vous buvez par jour (en Litre) !**", min_value=0.5,format="%.2f")
+    encodedwater=scaler_water.transform([[water]])[0][0]
+
+    
+
+    
     bmi=poids/((height)**2)
     encodedbmi=scaler_bmi.transform([[bmi]])[0][0]
 
-    genre=st.selectbox("Vous êtes un Homme ou une Femme ?",["H","F"])
+    
     if genre=="H":
       encodedgenre=1
       x=taille-cou
       fat =(495/(1.0324 - 0.19077*np.log10(x) + 0.15456*np.log10(height*100)))- 450
-
-
-
-
       encodedfat=scaler_fat.transform([[fat]])[0][0]
     elif genre=="F":
       encodedgenre=0
       x=taille+hanches-cou
-
       fat=(495/(1.29579 - 0.35004*np.log10(x) + 0.22100*np.log10(height*100)))- 450
-
       encodedfat=scaler_fat.transform([[fat]])[0][0]
 
-    type_entrainnement=st.selectbox("Type d'entrainnement : ",["Yoga","Crossfit","Cardio","Muscu"])
+    
 
 
     # Combine input features into a DataFrame
