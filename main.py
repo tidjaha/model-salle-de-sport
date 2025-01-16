@@ -257,7 +257,7 @@ def main():
             if bmi<18.4:
               conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des excercises ou vous allez prendre des muscles !**"
             else:
-              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes excercises !***"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes excercises !**"
           else:
             if fat<13:
               if bmi<18.4:
