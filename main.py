@@ -340,7 +340,21 @@ def main():
         st.table(conseil_reset)
         
         
-
+        data = {
+            "I.M.C": [80.0000],
+            "Conseil imc": ["**obésité morbide**, faite attention à votre santé et consulter un nutritionniste avec plus d'heures en salle par semaine, regardez aussi votre pourcentage de graisse ce qui recommande"],
+            "Taux de graisse": [-38.8610],
+            "Conseil graisse": ["vous avez ce que l'on appelle essentielle cependant mais vous avez un poids élevé ce qui veut dire que vous êtes bien musclé !"]
+        }
+        
+        # Création du DataFrame
+        df = pd.DataFrame(data)
+        
+        # Réinitialiser l'index pour l'exclure
+        df_reset = df.reset_index(drop=True)
+        
+        # Afficher dans Streamlit avec st.table()
+        st.table(df_reset)
 
         st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237 \n\n",prediction  )
 
