@@ -334,7 +334,7 @@ def main():
                   conseil_fat="vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime"
         st.write(conseil_fat) 
 
-        conseil=[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"Fat_Pourcentage"],conseil_fat]
+        conseil=[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"fat_pourcentage"],conseil_fat]
         conseil=pd.DataFrame(conseil, columns=["I.M.C","Conseil","Pourcentage de graisse","Conseil"])
         st.table(conseil)
         st.dataframe(conseil)
