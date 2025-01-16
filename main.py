@@ -334,27 +334,17 @@ def main():
                   conseil_fat="vous avez un taux de graisse très élevé consulter un nutritioniste et faite plus d'heures en salle par semaine avec un régime"
         st.write(conseil_fat) 
 
+        st.write("En général lors de votre séance vous brulez",prediction.loc[0,"Calories Brulé"],"Kcal")
+        st.write("Votre I.M.C est :",prediction.loc[0,"IMC"],"Kg/m2")
+        st.write("Votre taux de graisse est :",prediction.loc[0,"fat_pourcentage"],"%")
+        st.write(conseil_fat)
+
         conseil=[[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"fat_pourcentage"],conseil_fat]]
         conseil=pd.DataFrame(conseil)
         conseil_reset = conseil.reset_index(drop=True)
         st.table(conseil_reset)
         
         
-        data = {
-            "I.M.C": [80.0000],
-            "Conseil imc": ["**obésité morbide**, faite attention à votre santé et consulter un nutritionniste avec plus d'heures en salle par semaine, regardez aussi votre pourcentage de graisse ce qui recommande"],
-            "Taux de graisse": [-38.8610],
-            "Conseil graisse": ["vous avez ce que l'on appelle essentielle cependant mais vous avez un poids élevé ce qui veut dire que vous êtes bien musclé !"]
-        }
-        
-        # Création du DataFrame
-        
-        
-        # Réinitialiser l'index pour l'exclure
-        
-        
-        # Afficher dans Streamlit avec st.table()
-        st.table(data)
         
 
         st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237 \n\n",prediction  )
