@@ -97,12 +97,19 @@ def main():
     st.write("- Mousse au chocolat (1 portion, environ 100 g) : ~200 kcal")
     st.write("- Glace (2 boules, environ 100 g) : ~150 kcal")
 
+    st.title("**Voici quelques notion pour vous aider à remplir le champs**")
 
-    #st.image('')
-    #st.write("")
+    st.swrite("Figure 1")
+    st.image("test.jpg")
+
+    st.write("I.M.C : Indice de Masse Corporelle ")
+    st.write("BPM : Battement de votre coeur par minutes (valeure moyenne au repos entre 50-80 bpm, effort entre 170-190bpm)")
+    
 
 
+    
 
+    st.title("**Remplissez les champs !**")
 
     # création des champs pour le remplissage
 
@@ -112,10 +119,10 @@ def main():
     poids=st.number_input("Votre poids", min_value=20.0,format="%.1f")
     encodedpoids=scaler_weight.transform([[poids]])[0][0]
 
-    height=st.number_input("votre mesure 'en Metre' ",min_value=0.5, format="%.2f")
+    height=st.number_input("votre mesure -taille- 'en Metre' ",min_value=0.5, format="%.2f")
     encodedheight=scaler_height.transform([[height]])[0][0]
 
-    max_bpm=st.number_input("Vos batements de coeur maximal durant la séance", min_value=40)
+    max_bpm=st.number_input("Vos battements de coeur maximal durant la séance", min_value=40)
     encodedmax_bpm=scaler_max_bpm.transform([[max_bpm]])[0][0]
 
 
@@ -130,9 +137,9 @@ def main():
     tpsession=st.number_input("Durée de la séance en 'heure'", min_value=0.5,format="%.1f")
     encodedtpsession=scaler_tpsession.transform([[tpsession]])[0][0]
 
-    hanches=st.number_input("Tour des hanches en 'cm'(voir le schéma)", min_value=10.0,format="%.2f")
-    taille=st.number_input("Tour de taille en 'cm'(voir le schéma)", min_value=8.0,format="%.2f")
-    cou=st.number_input("Tour de cou en 'cm'(voir le schéma)", min_value=05.0,format="%.2f")
+    hanches=st.number_input("Tour des hanches en 'cm'(voir la fig 1)", min_value=10.0,format="%.2f")
+    taille=st.number_input("Tour de taille en 'cm'(voir la fig 1)", min_value=8.0,format="%.2f")
+    cou=st.number_input("Tour de cou en 'cm'(voir la fig 1)", min_value=05.0,format="%.2f")
 
     water=st.number_input("Quantité d'eau bu par jour en 'Litre'", min_value=0.5,format="%.2f")
     encodedwater=scaler_water.transform([[water]])[0][0]
@@ -164,8 +171,8 @@ def main():
     bmi=poids/((height)**2)
     encodedbmi=scaler_bmi.transform([[bmi]])[0][0]
 
-    genre=st.selectbox("votre genre",["homme","femme"])
-    if genre=="homme":
+    genre=st.selectbox("Vous êtes un Homme ou une Femme ?",["H","F"])
+    if genre=="H":
       encodedgenre=1
       x=taille-cou
       fat =(495/(1.0324 - 0.19077*np.log10(x) + 0.15456*np.log10(height*100)))- 450
@@ -174,7 +181,7 @@ def main():
 
 
       encodedfat=scaler_fat.transform([[fat]])[0][0]
-    elif genre=="femme":
+    elif genre=="F":
       encodedgenre=0
       x=taille+hanches-cou
 
@@ -252,7 +259,7 @@ def main():
 
 
 
-        if genre=="homme":
+        if genre=="H":
           if fat<5:
             if bmi<18.4:
               conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des exercices ou vous allez prendre des muscles !**"
