@@ -255,9 +255,9 @@ def main():
         if genre=="homme":
           if fat<5:
             if bmi<18.4:
-              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des excercises ou vous allez prendre des muscles !**"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des exercices ou vous allez prendre des muscles !**"
             else:
-              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes excercises !**"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes exercices !**"
           else:
             if fat<13:
               if bmi<18.4:
@@ -276,7 +276,7 @@ def main():
               else:
                 if fat<24:
                   if bmi<18.4:
-                    conseil_fat="**Vous avez un taux de graisse élevé, cependant votre poids reste inferieur à la norme, ce qui veut dire que vous avez peu de muscle essayer de privéligier des excercises pour vous muscler !**"
+                    conseil_fat="**Vous avez un taux de graisse élevé, cependant votre poids reste inferieur à la norme, ce qui veut dire que vous avez peu de muscle essayer de privéligier des exercices pour vous muscler !**"
                   else:
                     if bmi<25:
                       conseil_fat="**Vous avez un taux de graisse élevé et un poids normal ce qui veut dire vous avez trop de graisse et peu de muscle essayer de faire plus d'exercises de musculation !**"
@@ -287,9 +287,9 @@ def main():
         else:
           if fat<13:
             if bmi<18.4:
-              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des excercises ou vous allez prendre des muscles !**"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant essayer de prendre du poids un peu de graisse et des muscles, favoriser des exercices ou vous allez prendre des muscles !**"
             else:
-              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes excercises !***"
+              conseil_fat="**Vous avez ce que l'on appelle graisse essentielle cependant vous avez un poids qui est elevé, ce qui veut dire que vous êtes bien musclé ! Continuez à faire les mêmes exercices !***"
           else:
             if fat<20:
               if bmi<18.4:
@@ -323,15 +323,11 @@ def main():
         st.write("Votre taux de graisse est :",prediction.loc[0,"fat_pourcentage"],"%")
         st.write(conseil_fat)
 
-        conseil=[[prediction.loc[0,"IMC"],conseil_bmi,prediction.loc[0,"fat_pourcentage"],conseil_fat]]
-        conseil=pd.DataFrame(conseil)
-        conseil_reset = conseil.reset_index(drop=True)
-        st.table(conseil_reset)
         
         
         
 
-        st.write("Copyrights tidjaha 2025 (hamza.tidjani@yahoo.fr) \n\n Link Linkedin : https://www.linkedin.com/in/hamza-tidjani-539b78237 \n\n",prediction  )
+        st.write("Copyrights tidjaha 2025 \n\n https://github.com/tidjaha/model-salle-de-sport")
 
         # URL de Google Drive (assurez-vous que c'est un lien de téléchargement direct)
         url = "https://drive.google.com/uc?export=download&id=1mdMdvXYGiowfy3UwNtMBCAllv7wt1DUT"  # Exemple d'ID
