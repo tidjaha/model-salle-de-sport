@@ -336,7 +336,7 @@ def main():
         
         
 
-        st.write("Copyrights tidjaha jan-2025 !\n\n https://github.com/tidjaha/model-salle-de-sport")
+        st.write("Copyrights tidjaha jan-2025 !\n\n https://tidjaha.github.io/mon-CV/")
 
         
 
